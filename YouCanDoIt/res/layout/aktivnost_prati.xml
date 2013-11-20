@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Spinner
+        android:id="@+id/spAktivnost"
+        android:layout_width="180dp"
+        android:layout_height="38dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/urediBrKalorija"
+        android:layout_alignLeft="@+id/urediBrKalorija"
+        android:layout_marginTop="20dp"/>
+    
+    <TextView 
+        android:id="@+id/txtOdabir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_alignLeft="@+id/txtVrijeme"
+        android:layout_alignBottom="@+id/spAktivnost"
+        android:layout_toLeftOf="@+id/spAktivnost"
+        android:layout_above="@+id/txtVrijeme"
+        android:text="@string/txtOdabir"/>
+
+    <Button
+        android:id="@+id/gmbPokreni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="26dp"
+        android:text="@string/gmbPokreni" />
+
+    <Button
+        android:id="@+id/gmbZaustavi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="26dp"
+        android:text="@string/gmbZaustavi" />
+
+    <TextView
+        android:id="@+id/txtVrijeme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_below="@+id/spAktivnost"
+        android:paddingBottom="35dp"
+        android:text="@string/txtVrijeme" />
+    
+    <EditText
+        android:id="@+id/urediVrijeme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtVrijeme"
+        android:layout_alignLeft="@+id/urediBrKalorija"
+        android:layout_marginRight="5dp"
+        android:focusable="false"
+        android:inputType="none"
+        android:ems="10">
+        
+    </EditText>
+        
+
+    <TextView
+        android:id="@+id/txtDuljina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/txtVrijeme"
+        android:paddingBottom="35dp"
+        android:text="@string/txtDuljina" />
+
+    <EditText
+        android:id="@+id/urediDuljina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtDuljina"
+        android:layout_toRightOf="@+id/txtDuljina"
+        android:layout_alignLeft="@+id/urediBrKalorija"
+        android:layout_marginRight="5dp"
+        android:focusable="false"
+        android:inputType="none"
+        android:ems="10">
+    </EditText>
+
+    <TextView
+        android:id="@+id/txtProsBrzina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/txtDuljina"
+        android:paddingBottom="35dp"
+        android:text="@string/txtProsBrzina" />
+    
+    <EditText
+        android:id="@+id/urediProsBrzina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtProsBrzina"
+        android:layout_toRightOf="@+id/txtProsBrzina"
+        android:layout_alignLeft="@+id/urediBrKalorija"
+        android:layout_marginRight="5dp"
+        android:focusable="false"
+        android:inputType="none"
+        android:ems="10">
+    </EditText>
+    
+    <TextView
+        android:id="@+id/txtBrKalorija"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/txtProsBrzina"
+        android:text="@string/txtBrKalorija" />
+    
+    <EditText
+        android:id="@+id/urediBrKalorija"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtBrKalorija"
+        android:layout_toRightOf="@+id/txtBrKalorija"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="5dp"
+        android:focusable="false"
+        android:inputType="none"
+        android:ems="10">
+    </EditText>
+
+    
+
+</RelativeLayout>

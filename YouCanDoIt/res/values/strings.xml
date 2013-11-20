@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">YouCanDoIt</string>
+    <string name="action_settings">Settings</string>
+    <string name="gmbPlaniraj">Planiraj</string>
+    <string name="gmbPrati">Prati</string>
+    <string name="gmbPovijest">Povijest</string>
+    <string name="gmbPostavke">Postavke</string>
+    <string name="gmbPokreni">Pokreni</string>
+    <string name="gmbZaustavi">Zaustavi</string>
+    <string name="txtVrijeme">Trajanje</string>
+    <string name="txtDuljina">Duljina rute</string>
+    <string name="txtProsBrzina">Prosječna brzina</string>
+    <string name="txtBrKalorija">Potrošeno kalorija</string>
+    <string name="txtOdabir">Aktivnost</string>
+</resources>
