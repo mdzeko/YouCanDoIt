@@ -37,6 +37,6 @@
         <activity android:name=".AktivnostPlaniraj" />
         <activity android:name=".AktivnostPrati" />
         <activity android:name=".AktivnostPovijest" />
-    </application>
+    </application> 
 
 </manifest>
