@@ -29,7 +29,7 @@ public class AktivnostPrati extends Activity implements LocationListener
 	protected Context context;
 	protected boolean gps_enabled, network_enabled;
 	TextView txtLat;
-	String proba = "proba";
+	String proba = "proba_miso";
 	
 	
 	public int time = 0;
