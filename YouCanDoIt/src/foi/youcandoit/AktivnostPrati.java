@@ -24,12 +24,17 @@ public class AktivnostPrati extends Activity implements LocationListener
 	// The minimum distance to change Updates in meters
 	private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
 	// The minimum time between updates in milliseconds
-	private static final long MIN_TIME_BW_UPDATES = 1000 * 10; // 1 minute
+	private static final long MIN_TIME_BW_UPDATES = 1000 * 1; // 1 sek
 	protected LocationManager locationManager;
 	protected Context context;
 	protected boolean gps_enabled, network_enabled;
-	TextView txtLat;
+	TextView txtDuljina;
 	String proba = "proba_miso";
+	float udaljenost = 0;
+	float crta;
+	Location zadnjaLokacija;
+	Location novaLokacija;
+	Boolean prva = false;
 	
 	
 	public int time = 0;
@@ -45,22 +50,17 @@ public class AktivnostPrati extends Activity implements LocationListener
 		
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		// getting GPS status
-		gps_enabled = locationManager
-		.isProviderEnabled(LocationManager.GPS_PROVIDER);
+		gps_enabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 		// getting network status
-		network_enabled = locationManager
-		.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+		network_enabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
 		if (gps_enabled) 
 		{
-			locationManager.requestLocationUpdates(
-			LocationManager.GPS_PROVIDER, MIN_TIME_BW_UPDATES,
-			MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+
+			locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME_BW_UPDATES, MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
 		} else if (network_enabled) 
 		{
-			locationManager.requestLocationUpdates(
-			LocationManager.NETWORK_PROVIDER, MIN_TIME_BW_UPDATES,
-			MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+			locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME_BW_UPDATES,MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
 		};
 		
 		pokreni.setOnClickListener(new OnClickListener() {
@@ -103,12 +103,25 @@ public class AktivnostPrati extends Activity implements LocationListener
 			}
 		});
 	}
+	
+
 	@Override
 	public void onLocationChanged(Location location)
 	{
-		txtLat = (TextView) findViewById(R.id.txtDuljina);
-		txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:"
-		+ location.getLongitude());
+		if(prva == false)
+		{
+			zadnjaLokacija = location;
+			prva = true;
+		}
+		else
+		{
+			novaLokacija = location;
+			udaljenost += location.distanceTo(zadnjaLokacija);
+			zadnjaLokacija = novaLokacija;
+		}
+		txtDuljina = (EditText) findViewById(R.id.urediDuljina);
+		txtDuljina.setText("" + udaljenost);
+		//txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
 	}
 
 	@Override
