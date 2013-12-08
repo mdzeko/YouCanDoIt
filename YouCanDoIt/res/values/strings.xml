@@ -14,4 +14,10 @@
     <string name="txtProsBrzina">Prosječna brzina</string>
     <string name="txtBrKalorija">Potrošeno kalorija</string>
     <string name="txtOdabir">Aktivnost</string>
+    
+    <string-array name="poljeAktivnosti">
+        <item>Trčanje</item>
+        <item>Biciklizam</item>
+        <item>Rolanje</item>
+    </string-array>
 </resources>

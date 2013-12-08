@@ -8,6 +8,9 @@
 package foi.youcandoit;
 
 public final class R {
+    public static final class array {
+        public static final int poljeAktivnosti=0x7f080000;
+    }
     public static final class attr {
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
@@ -216,7 +219,7 @@ containing a value of this type.
         public static final int prikaz_mape=0x7f030002;
     }
     public static final class menu {
-        public static final int glavna_aktivnost=0x7f090000;
+        public static final int glavna_aktivnost=0x7f0a0000;
     }
     public static final class string {
         public static final int action_settings=0x7f06001a;
@@ -345,11 +348,11 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080001;
+        public static final int AppTheme=0x7f090001;
     }
     public static final class styleable {
         /** Attributes that can be used with a MapAttrs.
