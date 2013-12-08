@@ -29,7 +29,7 @@ public class AktivnostPrati extends Activity implements LocationListener
 	protected Context context;
 	protected boolean gps_enabled, network_enabled;
 	TextView txtDuljina;
-	String proba = "proba_miso";
+	TextView txtProsBrzina;
 	float udaljenost = 0;
 	float crta;
 	Location zadnjaLokacija;
@@ -121,6 +121,8 @@ public class AktivnostPrati extends Activity implements LocationListener
 		}
 		txtDuljina = (EditText) findViewById(R.id.urediDuljina);
 		txtDuljina.setText("" + udaljenost);
+		txtProsBrzina = (EditText) findViewById(R.id.urediProsBrzina);
+		txtProsBrzina.setText("" + udaljenost/time);
 		//txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
 	}
 
