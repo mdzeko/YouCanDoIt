@@ -325,7 +325,6 @@ containing a value of this type.
         public static final int txtOdabir=0x7f060025;
         public static final int txtProsBrzina=0x7f060023;
         public static final int txtVrijeme=0x7f060021;
-        public static final int txtmisoNeceSpavat=0x7f060026;
     }
     public static final class style {
         /** 

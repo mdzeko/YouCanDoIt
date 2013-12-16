@@ -15,8 +15,6 @@
     <string name="txtBrKalorija">Potrošeno kalorija</string>
     <string name="txtOdabir">Aktivnost</string>
     
-    <string name="txtmisoNeceSpavat">Aktivnost</string>
-    
     <string-array name="poljeAktivnosti">
         <item>Trčanje</item>
         <item>Biciklizam</item>
