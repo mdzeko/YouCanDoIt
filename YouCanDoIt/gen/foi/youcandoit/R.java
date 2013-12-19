@@ -320,7 +320,7 @@ containing a value of this type.
         public static final int gmbPovijest=0x7f06001d;
         public static final int gmbPrati=0x7f06001c;
         public static final int gmbZaustavi=0x7f060020;
-        public static final int proba2=0x7f060026;
+        public static final int proba3=0x7f060026;
         public static final int txtBrKalorija=0x7f060024;
         public static final int txtDuljina=0x7f060022;
         public static final int txtOdabir=0x7f060025;
