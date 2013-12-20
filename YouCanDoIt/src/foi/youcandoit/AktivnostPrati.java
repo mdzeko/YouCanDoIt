@@ -30,12 +30,16 @@ public class AktivnostPrati extends Activity implements LocationListener
 	protected boolean gps_enabled, network_enabled;
 	TextView txtDuljina;
 	TextView txtProsBrzina;
+	TextView txtBrojKalorija;
 	float udaljenost = 0;
 	float crta;
 	Location zadnjaLokacija;
 	Location novaLokacija;
 	Boolean prva = false;
 	
+	//NOVO
+	KalkulatorKalorija kalkulatorKalorija;
+	//NOVO
 	
 	public int time = 0;
 	public boolean zaust = false;
@@ -47,6 +51,9 @@ public class AktivnostPrati extends Activity implements LocationListener
 		Button pokreni = (Button) findViewById(R.id.gmbPokreni);
 		Button zaustavi = (Button) findViewById(R.id.gmbZaustavi);
 		
+		//NOVO
+		kalkulatorKalorija = new KalkulatorKalorija();
+		//NOVO
 		
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		// getting GPS status
@@ -123,6 +130,11 @@ public class AktivnostPrati extends Activity implements LocationListener
 		txtDuljina.setText("" + udaljenost);
 		txtProsBrzina = (EditText) findViewById(R.id.urediProsBrzina);
 		txtProsBrzina.setText("" + udaljenost/time);
+		//NOVO
+		txtBrojKalorija = (EditText) findViewById(R.id.urediBrKalorija);
+		txtBrojKalorija.setText("" + kalkulatorKalorija.Izracun(R.id.spAktivnost, time/3600, (udaljenost/time)*3.6)); 
+		//NOVO
+		
 		//txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
 	}
 
