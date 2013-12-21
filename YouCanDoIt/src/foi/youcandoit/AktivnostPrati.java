@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import android.location.LocationListener;
@@ -39,6 +40,8 @@ public class AktivnostPrati extends Activity implements LocationListener
 	
 	//NOVO
 	KalkulatorKalorija kalkulatorKalorija;
+	int pozicijaItema;
+	Spinner mySpinner;
 	//NOVO
 	
 	public int time = 0;
@@ -132,8 +135,11 @@ public class AktivnostPrati extends Activity implements LocationListener
 		if(time!=0)
 			txtProsBrzina.setText("" + udaljenost/time);
 		//NOVO
+		mySpinner = (Spinner)findViewById(R.id.spAktivnost);
+		pozicijaItema = mySpinner.getSelectedItemPosition();
+		
 		txtBrojKalorija = (EditText) findViewById(R.id.urediBrKalorija);
-		txtBrojKalorija.setText("" + kalkulatorKalorija.Izracun(R.id.spAktivnost, time/3600, (udaljenost/time)*3.6)); 
+		txtBrojKalorija.setText("" + kalkulatorKalorija.Izracun(pozicijaItema, time/3600, (udaljenost/time)*3.6)); 
 		//NOVO
 		
 		//txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
