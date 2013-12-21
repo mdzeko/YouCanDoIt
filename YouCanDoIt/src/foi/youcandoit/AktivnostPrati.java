@@ -139,7 +139,8 @@ public class AktivnostPrati extends Activity implements LocationListener
 		pozicijaItema = mySpinner.getSelectedItemPosition();
 		
 		txtBrojKalorija = (EditText) findViewById(R.id.urediBrKalorija);
-		txtBrojKalorija.setText("" + kalkulatorKalorija.Izracun(pozicijaItema, time/3600, (udaljenost/time)*3.6)); 
+		if(time!=0)
+			txtBrojKalorija.setText("" + kalkulatorKalorija.Izracun(pozicijaItema, time/3600, (udaljenost/time)*3.6)); 
 		//NOVO
 		
 		//txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
