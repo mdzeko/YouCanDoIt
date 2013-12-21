@@ -129,7 +129,8 @@ public class AktivnostPrati extends Activity implements LocationListener
 		txtDuljina = (EditText) findViewById(R.id.urediDuljina);
 		txtDuljina.setText("" + udaljenost);
 		txtProsBrzina = (EditText) findViewById(R.id.urediProsBrzina);
-		txtProsBrzina.setText("" + udaljenost/time);
+		if(time!=0)
+			txtProsBrzina.setText("" + udaljenost/time);
 		//NOVO
 		txtBrojKalorija = (EditText) findViewById(R.id.urediBrKalorija);
 		txtBrojKalorija.setText("" + kalkulatorKalorija.Izracun(R.id.spAktivnost, time/3600, (udaljenost/time)*3.6)); 
