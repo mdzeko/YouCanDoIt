@@ -3,7 +3,7 @@ package foi.youcandoit;
 public class KalkulatorKalorija{
 double brojKalorija;
 	
-public double Izracun(int aktivnost, int vrijeme, double prosBrzina){
+public double Izracun(int aktivnost, double vrijeme, double prosBrzina){
 	    switch (aktivnost) {
 		case 0:
 			brojKalorija = vrijeme*prosBrzina*60;

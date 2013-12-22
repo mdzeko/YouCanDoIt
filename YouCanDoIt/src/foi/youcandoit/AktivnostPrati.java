@@ -22,21 +22,24 @@ import android.location.LocationListener;
 public class AktivnostPrati extends Activity implements LocationListener
 {
 	
-	// The minimum distance to change Updates in meters
-	private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
-	// The minimum time between updates in milliseconds
-	private static final long MIN_TIME_BW_UPDATES = 1000 * 1; // 1 sek
+	// Minimalna udaljenost prije azuriranja lokacije u metrima
+	private static final long MINIMALNA_UDALJENOST = 10; // 10 metara
+	// Minimalno vrijeme izmedju dva azuriranja lokacije (milisekunde)
+	private static final long MINIMALNI_VREMENSKI_PERIOD = 1000 * 1; // 10 sek
 	protected LocationManager locationManager;
+	
 	protected Context context;
 	protected boolean gps_enabled, network_enabled;
+	
 	TextView txtDuljina;
 	TextView txtProsBrzina;
 	TextView txtBrojKalorija;
 	float udaljenost = 0;
 	float crta;
+	
 	Location zadnjaLokacija;
 	Location novaLokacija;
-	Boolean prva = false;
+	
 	
 	//NOVO
 	KalkulatorKalorija kalkulatorKalorija;
@@ -47,18 +50,29 @@ public class AktivnostPrati extends Activity implements LocationListener
 	public int time = 0;
 	public boolean zaust = false;
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+	protected void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.aktivnost_prati);
 		Button pokreni = (Button) findViewById(R.id.gmbPokreni);
 		Button zaustavi = (Button) findViewById(R.id.gmbZaustavi);
+		/*
+		Criteria kriterij = new Criteria();
+		kriterij.setAccuracy(Criteria.ACCURACY_FINE);
+		kriterij.setAltitudeRequired(false);
+		kriterij.setBearingRequired(false);
+		kriterij.setCostAllowed(false);
+		kriterij.setPowerRequirement(Criteria.POWER_LOW);
+		*/
 		
 		//NOVO
 		kalkulatorKalorija = new KalkulatorKalorija();
 		//NOVO
 		
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		//String izvorLokacije = locationManager.getBestProvider(kriterij, true);
+		
+		//locationManager.requestLocationUpdates(izvorLokacije, MINIMALNI_VREMENSKI_PERIOD, MINIMALNA_UDALJENOST, this);
 		// getting GPS status
 		gps_enabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 		// getting network status
@@ -66,11 +80,10 @@ public class AktivnostPrati extends Activity implements LocationListener
 
 		if (gps_enabled) 
 		{
-
-			locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME_BW_UPDATES, MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+			locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MINIMALNI_VREMENSKI_PERIOD, MINIMALNA_UDALJENOST, this);
 		} else if (network_enabled) 
 		{
-			locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME_BW_UPDATES,MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+			locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MINIMALNI_VREMENSKI_PERIOD, MINIMALNA_UDALJENOST, this);
 		};
 		
 		pokreni.setOnClickListener(new OnClickListener() {
@@ -118,6 +131,8 @@ public class AktivnostPrati extends Activity implements LocationListener
 	@Override
 	public void onLocationChanged(Location location)
 	{
+		Boolean prva = false;
+		
 		if(prva == false)
 		{
 			zadnjaLokacija = location;
@@ -140,7 +155,7 @@ public class AktivnostPrati extends Activity implements LocationListener
 		
 		txtBrojKalorija = (EditText) findViewById(R.id.urediBrKalorija);
 		if(time!=0)
-			txtBrojKalorija.setText("" + kalkulatorKalorija.Izracun(pozicijaItema, time/3600, (udaljenost/time)*3.6)); 
+			txtBrojKalorija.setText("" + kalkulatorKalorija.Izracun(pozicijaItema, (double)time/3600, (udaljenost/time)*3.6));
 		//NOVO
 		
 		//txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
