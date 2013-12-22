@@ -116,7 +116,6 @@ int string gmbPostavke 0x7f06001e
 int string gmbPovijest 0x7f06001d
 int string gmbPrati 0x7f06001c
 int string gmbZaustavi 0x7f060020
-int string proba3 0x7f060026
 int string txtBrKalorija 0x7f060024
 int string txtDuljina 0x7f060022
 int string txtOdabir 0x7f060025
