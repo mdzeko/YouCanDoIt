@@ -3,12 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <fragment
-	    class="com.google.android.gms.maps.SupportMapFragment"
-	    android:id="@+id/mapa"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"/>
-    
 
+    <fragment 
+        android:id="@+id/mapa"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        class="foi.youcandoit.MySupportMapFragment" />
 </LinearLayout>
