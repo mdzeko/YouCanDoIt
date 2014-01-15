@@ -4,14 +4,19 @@ import foi.youcandoit.MySupportMapFragment;
 import foi.youcandoit.OnMyLongClickListener;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.http.conn.scheme.PlainSocketFactory;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +26,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -41,6 +48,18 @@ public class AktivnostPlaniraj extends FragmentActivity implements OnMyLongClick
 	private Context c;
 	public static int groupId;
 	
+	// NOVO 3
+	EditText ptTrajanje;
+	KalkulatorKalorija kalkulatorKalorija;
+	int pozicijaItema;
+	Spinner mySpinner;
+	float udaljenost = 0;
+	float crta;
+	Boolean prva = false;
+	Location zadnjaLokacija;
+	Location novaLokacija;
+	int time;
+	// NOVO 3
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +67,25 @@ public class AktivnostPlaniraj extends FragmentActivity implements OnMyLongClick
 		setContentView(R.layout.prikaz_mape);
 		c = this;
 		//groupId = getIntent().getExtras().getInt("intGroupId");
+		
+		//NOVO 3
+		Button Izracunaj = (Button) findViewById(R.id.gmbIzracunaj);
+		ptTrajanje = (EditText)findViewById(R.id.ptTrajanje);
+		kalkulatorKalorija = new KalkulatorKalorija();
+		mySpinner = (Spinner)findViewById(R.id.spAktivnost);
+		
+		Izracunaj.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) 
+			{
+				pozicijaItema = mySpinner.getSelectedItemPosition();
+				time = Integer.parseInt(ptTrajanje.getText().toString())*60;
+				Toast.makeText(AktivnostPlaniraj.this, "broj kalorija: " + kalkulatorKalorija.Izracun(pozicijaItema, (double)time/3600, ((udaljenost/time)*3.6)) + "\nudaljenost: " + udaljenost, Toast.LENGTH_LONG).show();	
+			}
+		});
+		//NOVO 3
+		
 		
 		//prikaz podataka na mapu
 				MySupportMapFragment mapFragment = 
@@ -167,6 +205,7 @@ public class AktivnostPlaniraj extends FragmentActivity implements OnMyLongClick
 				}
 		}
 		
+		
 		//elementi kod pretplatnika na dogadaj
 		@Override
 		public void onMyLongClick(LatLng clickedPoint) {
@@ -181,7 +220,27 @@ public class AktivnostPlaniraj extends FragmentActivity implements OnMyLongClick
 			myDialog.setCancelable(true);
 			myDialog.show();*/
 			
-			Toast.makeText(this, "bravo" + clickedPoint.latitude + " " + clickedPoint.longitude, Toast.LENGTH_LONG).show();
+			//Toast.makeText(this, "bravo" + clickedPoint.latitude + " " + clickedPoint.longitude, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Tocka dodana", Toast.LENGTH_LONG).show();
+			
+			//NOVO 3
+			Location location = new Location("Test");
+			location.setLatitude(clickedPoint.latitude);
+			location.setLongitude(clickedPoint.longitude);
+			
+			if(prva == false)
+			{
+				zadnjaLokacija = location;
+				prva = true;
+			}
+			else
+			{
+				novaLokacija = location;
+				udaljenost += location.distanceTo(zadnjaLokacija);
+				zadnjaLokacija = novaLokacija;
+			}
+			//NOVO 3
+			
 			
 			//MOJE
 			//Toast.makeText(this, "bravo" + clickedPoint.latitude + " " + clickedPoint.longitude, Toast.LENGTH_LONG).show();

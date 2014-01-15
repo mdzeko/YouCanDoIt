@@ -56,7 +56,8 @@ int drawable ic_plusone_medium_off_client 0x7f020019
 int drawable ic_plusone_small_off_client 0x7f02001a
 int drawable ic_plusone_standard_off_client 0x7f02001b
 int drawable ic_plusone_tall_off_client 0x7f02001c
-int id action_settings 0x7f050016
+int id action_settings 0x7f050018
+int id gmbIzracunaj 0x7f050016
 int id gmbPlaniraj 0x7f050011
 int id gmbPokreni 0x7f050009
 int id gmbPostavke 0x7f050014
@@ -64,9 +65,10 @@ int id gmbPovijest 0x7f050013
 int id gmbPrati 0x7f050012
 int id gmbZaustavi 0x7f05000a
 int id hybrid 0x7f050004
-int id mapa 0x7f050015
+int id mapa 0x7f050017
 int id none 0x7f050000
 int id normal 0x7f050001
+int id ptTrajanje 0x7f050015
 int id satellite 0x7f050002
 int id spAktivnost 0x7f050005
 int id terrain 0x7f050003
@@ -110,6 +112,7 @@ int string common_google_play_services_update_text 0x7f060008
 int string common_google_play_services_update_title 0x7f060007
 int string common_signin_button_text 0x7f060011
 int string common_signin_button_text_long 0x7f060012
+int string gmbIzracunaj 0x7f060026
 int string gmbPlaniraj 0x7f06001b
 int string gmbPokreni 0x7f06001f
 int string gmbPostavke 0x7f06001e

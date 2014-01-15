@@ -4,6 +4,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <Spinner
+        android:id="@+id/spAktivnost"
+        android:layout_width="180dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:entries="@array/poljeAktivnosti"/>
+
+    <EditText
+        android:id="@+id/ptTrajanje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" 
+        android:inputType="number">
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/gmbIzracunaj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gmbIzracunaj"
+        android:onClick="myClickHandler" />
+
     <fragment 
         android:id="@+id/mapa"
         android:layout_height="match_parent"
