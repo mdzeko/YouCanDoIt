@@ -71,6 +71,11 @@ public class AktivnostPlaniraj extends FragmentActivity implements OnMyLongClick
 		//NOVO 3
 		Button Izracunaj = (Button) findViewById(R.id.gmbIzracunaj);
 		ptTrajanje = (EditText)findViewById(R.id.ptTrajanje);
+		
+		//NOVO 4
+		ptTrajanje.setText("60");
+		//NOVO 4
+		
 		kalkulatorKalorija = new KalkulatorKalorija();
 		mySpinner = (Spinner)findViewById(R.id.spAktivnost);
 		

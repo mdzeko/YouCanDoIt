@@ -57,8 +57,13 @@ public class AktivnostPrati extends Activity implements LocationListener
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.aktivnost_prati);
-		Button pokreni = (Button) findViewById(R.id.gmbPokreni);
-		Button zaustavi = (Button) findViewById(R.id.gmbZaustavi);
+		//Button pokreni = (Button) findViewById(R.id.gmbPokreni);
+		//Button zaustavi = (Button) findViewById(R.id.gmbZaustavi);
+		//NOVO 4
+		final Button pokreni = (Button) findViewById(R.id.gmbPokreni);
+		final Button zaustavi = (Button) findViewById(R.id.gmbZaustavi);
+		zaustavi.setEnabled(false);
+		//NOVO 4
 		
 		Criteria kriterij = new Criteria();
 		kriterij.setAccuracy(Criteria.ACCURACY_FINE);
@@ -95,6 +100,11 @@ public class AktivnostPrati extends Activity implements LocationListener
 			@Override
 			public void onClick(View v) 
 			{
+				//NOVO 4
+				pokreni.setEnabled(false);
+				zaustavi.setEnabled(true);
+				//NOVO 4
+				
 				Timer t = new Timer();
 		        //Set the schedule function and rate
 		        t.scheduleAtFixedRate(new TimerTask() {
@@ -126,6 +136,10 @@ public class AktivnostPrati extends Activity implements LocationListener
 			@Override
 			public void onClick(View v) 
 			{
+				//NOVO 4
+				zaustavi.setEnabled(false);
+				//NOVO 4
+				
 				zaust = true;
 			}
 		});
@@ -135,7 +149,6 @@ public class AktivnostPrati extends Activity implements LocationListener
 	@Override
 	public void onLocationChanged(Location location)
 	{
-		Toast.makeText(this, "prvi", Toast.LENGTH_SHORT).show();
 		if(prva == false)
 		{
 			zadnjaLokacija = location;
@@ -148,20 +161,16 @@ public class AktivnostPrati extends Activity implements LocationListener
 			zadnjaLokacija = novaLokacija;
 		}
 		txtDuljina = (EditText) findViewById(R.id.urediDuljina);
-		txtDuljina.setText("" + udaljenost);
+		txtDuljina.setText("" + String.format("%.2f", udaljenost));
 		txtProsBrzina = (EditText) findViewById(R.id.urediProsBrzina);
 		if(time!=0)
-			txtProsBrzina.setText("" + udaljenost/time);
-		//NOVO
+			txtProsBrzina.setText("" + String.format("%.2f", udaljenost/time));
 		mySpinner = (Spinner)findViewById(R.id.spAktivnost);
 		pozicijaItema = mySpinner.getSelectedItemPosition();
 		
 		txtBrojKalorija = (EditText) findViewById(R.id.urediBrKalorija);
 		if(time!=0)
-			txtBrojKalorija.setText("" + kalkulatorKalorija.Izracun(pozicijaItema, (double)time/3600, (udaljenost/time)*3.6));
-		//NOVO
-		
-		//txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
+			txtBrojKalorija.setText("" + String.format("%.2f", kalkulatorKalorija.Izracun(pozicijaItema, (double)time/3600, (udaljenost/time)*3.6)));
 	}
 
 	@Override
