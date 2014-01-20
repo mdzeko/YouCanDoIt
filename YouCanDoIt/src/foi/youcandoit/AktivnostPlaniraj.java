@@ -240,7 +240,12 @@ public class AktivnostPlaniraj extends FragmentActivity implements OnMyLongClick
 			}
 			else
 			{
-				novaLokacija = location;
+				novaLokacija = location;	
+				
+				map.addPolyline(new PolylineOptions()
+			     .add(new LatLng(zadnjaLokacija.getLatitude(), zadnjaLokacija.getLongitude()), new LatLng(location.getLatitude(), location.getLongitude()))
+			     .width(3).color(Color.RED));
+				
 				udaljenost += location.distanceTo(zadnjaLokacija);
 				zadnjaLokacija = novaLokacija;
 			}
